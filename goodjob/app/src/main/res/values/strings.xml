@@ -25,8 +25,8 @@
     <string name="user">Soy Usuario</string>
     <string name="company">Soy Empresa</string>
     <string name="Login">Iniciar Sesión</string>
-    <string name="Tvuser">Ingrese Usuario...</string>
-    <string name="TvPass">Ingrese Contraseña...</string>
+    <string name="Tvuser">Ingrese Correo o RUC</string>
+    <string name="TvPass">Ingrese Contraseña</string>
     <string name="TvRegister">Registrate Aquí</string>
 
     <!-- strings for fragment formRegisterUser-->
