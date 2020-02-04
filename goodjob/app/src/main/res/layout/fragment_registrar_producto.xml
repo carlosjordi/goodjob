@@ -33,7 +33,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_top"
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin_top"
@@ -59,7 +59,7 @@
                             android:contentDescription="@string/imagen_producto"
                             android:scaleType="centerCrop"
                             android:src="@drawable/placeholder_publicar_actividad" />
-                    </android.support.v7.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                             android:contentDescription="@string/icono_nombre_actividad"
                             android:src="@drawable/producto" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilNombreProducto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                                 android:hint="@string/nombre_producto"
                                 android:importantForAutofill="no"
                                 android:inputType="text" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -104,7 +104,7 @@
                             android:contentDescription="@string/icono_descripcion_actividad"
                             android:src="@drawable/amount" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilCantidadProductoRegistro"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                                 android:hint="@string/cantidad_producto"
                                 android:importantForAutofill="no"
                                 android:inputType="number" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,7 +134,7 @@
                             android:contentDescription="@string/icono_cantidad_participantes_requeridos"
                             android:src="@drawable/ic_valor" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilValorProducto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                                 android:hint="@string/valor_producto"
                                 android:importantForAutofill="no"
                                 android:inputType="number" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -163,7 +163,7 @@
                             android:contentDescription="@string/icono_recompensa"
                             android:src="@drawable/ic_place" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilLugarCanje"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -178,10 +178,10 @@
                                 android:hint="@string/lugar_canje"
                                 android:importantForAutofill="no"
                                 android:inputType="text" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnRegistrarProducto"

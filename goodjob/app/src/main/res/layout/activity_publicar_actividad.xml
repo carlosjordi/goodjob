@@ -32,7 +32,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCampos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.CardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin_top"
@@ -59,7 +59,7 @@
                             android:contentDescription="@string/imagen_actividad"
                             android:scaleType="centerCrop"
                             android:src="@drawable/placeholder_publicar_actividad" />
-                    </android.support.v7.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                             android:contentDescription="@string/icono_nombre_actividad"
                             android:src="@drawable/ic_account_circle_black_24dp" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilNombreActividad"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                                 android:hint="@string/Nombre_de_la_Actividad"
                                 android:importantForAutofill="no"
                                 android:inputType="text" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -104,7 +104,7 @@
                             android:contentDescription="@string/icono_descripcion_actividad"
                             android:src="@drawable/ic_content_paste_black_24dp" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilDescripcionActividad"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                                 android:lines="5"
                                 android:maxLines="6"
                                 android:minLines="1" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -139,7 +139,7 @@
                             android:contentDescription="@string/icono_fecha_realizarse"
                             android:src="@drawable/ic_date_range_black_24dp" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilFecha"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                                 android:hint="@string/fecha_realizarse"
                                 android:importantForAutofill="no"
                                 android:inputType="text" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -169,7 +169,7 @@
                             android:contentDescription="@string/icono_cantidad_participantes_requeridos"
                             android:src="@drawable/ic_group_black_24dp" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilCantidadIntegrantes"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                                 android:hint="@string/Cantidad_de_Integrantes"
                                 android:importantForAutofill="no"
                                 android:inputType="number" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <View style="@style/publicar_actividad_spinner_divider" />
@@ -267,7 +267,7 @@
                             android:contentDescription="@string/icono_recompensa"
                             android:src="@drawable/ic_local_atm_black_24dp" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilRecompensa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -282,10 +282,10 @@
                                 android:hint="@string/Recompensa"
                                 android:importantForAutofill="no"
                                 android:inputType="number" />
-                        </android.support.design.widget.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnPublicar"

@@ -1,14 +1,12 @@
 package com.example.goodjob.viewholder;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.goodjob.R;
 import com.example.goodjob.adapter.EstadoMisActividadesAdapter;
-
-import java.text.BreakIterator;
 
 public class EstadoMisActividadesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
