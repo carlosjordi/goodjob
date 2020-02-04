@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.goodjob;
 
 import org.junit.Test;
 

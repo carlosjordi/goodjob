@@ -1,4 +1,4 @@
-package com.example.goodjob;
+package com.goodjob;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
