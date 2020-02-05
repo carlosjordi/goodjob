@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.adapter.ActivityAdapter;
 
 public class ActivityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

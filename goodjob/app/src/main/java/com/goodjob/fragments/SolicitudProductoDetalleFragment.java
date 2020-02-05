@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.classes.SolicitudProducto;
 import com.goodjob.classes.ValidSession;
 

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.classes.Actividad;
 import com.goodjob.viewholder.ActivityViewHolder;
 

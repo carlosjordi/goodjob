@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.classes.EstadoMisActividadesResponse;
 import com.goodjob.viewholder.EstadoMisActividadesViewHolder;
 

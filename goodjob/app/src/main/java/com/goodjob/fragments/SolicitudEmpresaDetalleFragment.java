@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.classes.Empresa;
 import com.goodjob.classes.ValidSession;
 

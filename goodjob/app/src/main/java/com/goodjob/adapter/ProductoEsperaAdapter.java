@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.classes.ProductoEspera;
 
 import java.util.List;

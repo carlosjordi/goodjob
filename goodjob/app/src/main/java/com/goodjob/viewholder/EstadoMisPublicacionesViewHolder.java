@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.adapter.EstadoMisPublicacionesAdapter;
 
 public class EstadoMisPublicacionesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -14,7 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.adapter.EstadoMisPublicacionesAdapter;
 import com.goodjob.classes.EstadoMisPublicacionesResponse;
 import com.goodjob.classes.ValidSession;

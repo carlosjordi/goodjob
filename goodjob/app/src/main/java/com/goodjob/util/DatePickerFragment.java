@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.example.goodjob.R;
+import com.goodjob.R;
 
 import java.util.Calendar;
 

@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.goodjob.R;
+import com.goodjob.R;
 import com.goodjob.classes.ProductoEspera;
 import com.goodjob.classes.ValidSession;
 import com.goodjob.adapter.ProductoEsperaAdapter;
