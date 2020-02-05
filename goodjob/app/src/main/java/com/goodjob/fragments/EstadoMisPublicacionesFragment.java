@@ -57,7 +57,7 @@ public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMi
     }
 
     private void cargarData() {
-        String url = ValidSession.IP + "/ws_listarMisPublicaciones.php?id_empresa=" + ValidSession.empresaLogueada.getId();
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarMisPublicaciones.php?id_empresa=" + ValidSession.INSTANCE.getEmpresaLogueada().getId();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -66,7 +66,7 @@ public class EstadoMisPublicacionesFragment extends Fragment implements EstadoMi
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        EstadoMisPublicacionesResponse publicacion = EstadoMisPublicacionesResponse.cargarDesdeJsonObject(jsonObject);
+                        EstadoMisPublicacionesResponse publicacion = EstadoMisPublicacionesResponse.Companion.cargarDesdeJsonObject(jsonObject);
                         publicaciones.add(publicacion);
                     }
                     cargarAdapter();

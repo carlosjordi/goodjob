@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
         publicarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ValidSession.empresaLogueada != null)
+                if (ValidSession.INSTANCE.getEmpresaLogueada() != null)
                     startActivity(new Intent(getActivity(), PublicarActividadActivity.class));
                 else
                     Toast.makeText(getContext(), "No puedes realizar esta acción", Toast.LENGTH_LONG).show();
@@ -78,13 +78,13 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
     }
 
     private void mostrarBotonPublicar() {
-        if (ValidSession.empresaLogueada != null)
+        if (ValidSession.INSTANCE.getEmpresaLogueada() != null)
             publicarActividad.setVisibility(View.VISIBLE);
     }
 
     private void loadData() {
         activities = new ArrayList<>();
-        String url = ValidSession.IP + "/ws_listarActividades2.php";
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarActividades2.php";
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         StringRequest jsonRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
     }
 
     private Actividad loadActivityDataFromDatabase(JSONObject jsonObject) {
-        return Actividad.loadActivityDataFromJsonObject(jsonObject);
+        return Actividad.Companion.loadActivityDataFromJsonObject(jsonObject);
     }
 
     private void loadAdapter() {

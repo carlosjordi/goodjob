@@ -52,7 +52,7 @@ public class SolicitudActividadesEsperaFragment extends Fragment implements OnSo
     }
 
     private void listarActividadesEnEspera(View v) {
-        String url = ValidSession.IP + "/ws_listarSolicitudesActividades.php";
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarSolicitudesActividades.php";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -62,7 +62,7 @@ public class SolicitudActividadesEsperaFragment extends Fragment implements OnSo
                     Actividad a;
                     for (int i = 0; i < array.length(); i++) {
                         json = array.getJSONObject(i);
-                        a = Actividad.loadActivityDataFromJsonObject(json);
+                        a = Actividad.Companion.loadActivityDataFromJsonObject(json);
                         actividades.add(a);
                     }
                     cargarAdapter();

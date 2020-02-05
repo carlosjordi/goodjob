@@ -77,14 +77,14 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
         final int idActividad = getIntent().getIntExtra("idActividad", 0);
         if (idActividad != 0) {
-            String url = ValidSession.IP + "/ws_listarActividadSeleccionadaPorLogin.php?id_actividad=" + idActividad;
+            String url = ValidSession.INSTANCE.getIP() + "/ws_listarActividadSeleccionadaPorLogin.php?id_actividad=" + idActividad;
             StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
                         JSONArray array = new JSONArray(response);
                         JSONObject jsonObject = array.getJSONObject(0);
-                        actividad = Actividad.loadActivityDataFromJsonObject(jsonObject);
+                        actividad = Actividad.Companion.loadActivityDataFromJsonObject(jsonObject);
                         loadData(actividad);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -105,12 +105,12 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
 
                 if (validateStartedSession()) {
                     if (selectedActivity != null) {
-                        realizarPostulacion(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
+                        realizarPostulacion(ValidSession.INSTANCE.getUsuarioLogueado().getId(), selectedActivity.getId());
                         cambioDeEstadoBoton();
                         incrementarParticipantes(selectedActivity.getCurrentParticipants() + 1, selectedActivity.getId());
 
                     } else {
-                        realizarPostulacion(ValidSession.usuarioLogueado.getId(), idActividad);
+                        realizarPostulacion(ValidSession.INSTANCE.getUsuarioLogueado().getId(), idActividad);
                         cambioDeEstadoBoton();
                         incrementarParticipantes(actividad.getCurrentParticipants() + 1, idActividad);
                     }
@@ -122,13 +122,13 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
             }
         });
 
-        if (ValidSession.usuarioLogueado != null)
+        if (ValidSession.INSTANCE.getUsuarioLogueado() != null)
             if (selectedActivity != null) {
-                consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), selectedActivity.getId());
+                consultarSiYaPostulo(ValidSession.INSTANCE.getUsuarioLogueado().getId(), selectedActivity.getId());
             } else {
-                consultarSiYaPostulo(ValidSession.usuarioLogueado.getId(), idActividad);
+                consultarSiYaPostulo(ValidSession.INSTANCE.getUsuarioLogueado().getId(), idActividad);
             }
-        else if (ValidSession.empresaLogueada != null)
+        else if (ValidSession.INSTANCE.getEmpresaLogueada() != null)
             empresasNoPostulan();
 
         Certificado.handleSSLHandshake();
@@ -144,7 +144,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
         requiredParticipants.setText("Se necesitan " + actividad.getRequiredParticipants() + " personas");
         distrito.setText(actividad.getDistrito());
         reward.setText(actividad.getRewardType() + " : " + actividad.getReward());
-        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES + actividad.getPhoto(), new Response.Listener<Bitmap>() {
+        ImageRequest request = new ImageRequest(ValidSession.INSTANCE.getIMAGENES_ACTIVIDADES() + actividad.getPhoto(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 photo.setImageBitmap(response);
@@ -159,7 +159,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     }
 
     private boolean validateStartedSession() {
-        return ValidSession.usuarioLogueado != null;
+        return ValidSession.INSTANCE.getUsuarioLogueado() != null;
     }
 
     private void dialogMessage(String title, Integer message, String positivo, final Class<?> next) {
@@ -185,7 +185,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     }
 
     private void consultarSiYaPostulo(Integer idUsuario, Integer idActividad) {
-        String url = ValidSession.IP + "/ws_consultarPostulacionUsuario.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_consultarPostulacionUsuario.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -214,7 +214,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     }
 
     private void realizarPostulacion(Integer idUsuario, Integer idActividad) {
-        String url = ValidSession.IP + "/ws_postulacionActividad.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_postulacionActividad.php?id_usuario=" + idUsuario + "&id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -243,7 +243,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
     }
 
     private void incrementarParticipantes(final Integer cantidad, Integer idActividad) {
-        String url = ValidSession.IP + "/ws_incrementarParticipantesPostulacion.php?cantidad=" + cantidad + "&id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_incrementarParticipantesPostulacion.php?cantidad=" + cantidad + "&id_actividad=" + idActividad;
 
         OkHttpClient client = new OkHttpClient();
         okhttp3.Request request = new okhttp3.Request.Builder()

@@ -85,7 +85,7 @@ public class SolicitudActividadesEsperaDetalleFragment extends Fragment {
         participantes_reque.setText(actividad.getRequiredParticipants() + " personas");
         trecompensa.setText(" " + actividad.getReward());
 
-        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_ACTIVIDADES + actividad.getPhoto(), new Response.Listener<Bitmap>() {
+        ImageRequest request = new ImageRequest(ValidSession.INSTANCE.getIMAGENES_ACTIVIDADES() + actividad.getPhoto(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 imagen.setImageBitmap(response);
@@ -103,7 +103,7 @@ public class SolicitudActividadesEsperaDetalleFragment extends Fragment {
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String url = ValidSession.IP + "/ws_aceptar_actividad.php?id_actividad=" + actividad.getId();
+                String url = ValidSession.INSTANCE.getIP() + "/ws_aceptar_actividad.php?id_actividad=" + actividad.getId();
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
                         .url(url)
@@ -139,7 +139,7 @@ public class SolicitudActividadesEsperaDetalleFragment extends Fragment {
         rechazar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String url = ValidSession.IP + "/ws_rechazar_actividad.php?id_actividad=" + actividad.getId();
+                String url = ValidSession.INSTANCE.getIP() + "/ws_rechazar_actividad.php?id_actividad=" + actividad.getId();
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
                         .url(url)

@@ -67,7 +67,7 @@ public class SolicitudProductoDetalleFragment extends Fragment {
         stock.setText(p.getStock().toString());
         valor.setText(p.getValor().toString());
         lugarCanje.setText(p.getLugarCanje());
-        ImageRequest request = new ImageRequest(ValidSession.IMAGENES_PRODUCTOS + sp.getImagenUrl(), new Response.Listener<Bitmap>() {
+        ImageRequest request = new ImageRequest(ValidSession.INSTANCE.getIMAGENES_PRODUCTOS() + sp.getImagenUrl(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 imagen.setImageBitmap(response);
@@ -85,7 +85,7 @@ public class SolicitudProductoDetalleFragment extends Fragment {
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String url = ValidSession.IP + "/ws_aceptar_producto.php?id_producto=" + sp.getId();
+                String url = ValidSession.INSTANCE.getIP() + "/ws_aceptar_producto.php?id_producto=" + sp.getId();
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
                         .url(url)
@@ -121,7 +121,7 @@ public class SolicitudProductoDetalleFragment extends Fragment {
         rechazar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String url = ValidSession.IP + "/ws_rechazar_producto.php?id_producto=" + sp.getId();
+                String url = ValidSession.INSTANCE.getIP() + "/ws_rechazar_producto.php?id_producto=" + sp.getId();
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
                         .url(url)

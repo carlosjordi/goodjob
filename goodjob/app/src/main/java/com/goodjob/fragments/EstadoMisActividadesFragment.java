@@ -48,15 +48,15 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
         rvEstadoMisActividades.setLayoutManager(lm);
         rvEstadoMisActividades.setHasFixedSize(true);
 
-        if (ValidSession.usuarioLogueado != null)
-            cargarData(ValidSession.usuarioLogueado.getId());
+        if (ValidSession.INSTANCE.getUsuarioLogueado() != null)
+            cargarData(ValidSession.INSTANCE.getUsuarioLogueado().getId());
 
         Certificado.handleSSLHandshake();
         return view;
     }
 
     private void cargarData(Integer idUsuario) {
-        String url = ValidSession.IP + "/ws_listarMisActividades.php?id_usuario=" + idUsuario;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarMisActividades.php?id_usuario=" + idUsuario;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -65,7 +65,7 @@ public class EstadoMisActividadesFragment extends Fragment implements EstadoMisA
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        final EstadoMisActividadesResponse actividad = EstadoMisActividadesResponse.cargarDataDesdeJsonObject(jsonObject);
+                        final EstadoMisActividadesResponse actividad = EstadoMisActividadesResponse.Companion.cargarDataDesdeJsonObject(jsonObject);
                         misActividades.add(actividad);
                     }
                     cargarAdaptador();

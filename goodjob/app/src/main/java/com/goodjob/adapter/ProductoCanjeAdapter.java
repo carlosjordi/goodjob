@@ -41,7 +41,7 @@ public class ProductoCanjeAdapter extends RecyclerView.Adapter<ProductoCanjeAdap
         pvh.producto.setText(p.getProducto());
         pvh.stock.setText(String.valueOf(p.getStock()));
         pvh.valor.setText(String.valueOf(p.getValor()));
-        ImageRequest imageRequest = new ImageRequest(ValidSession.IMAGENES_PRODUCTOS + p.getImagen(), new Response.Listener<Bitmap>() {
+        ImageRequest imageRequest = new ImageRequest(ValidSession.INSTANCE.getIMAGENES_PRODUCTOS() + p.getImagen(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 pvh.imagen.setImageBitmap(response);

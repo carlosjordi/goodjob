@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String url;
         if (txtUser.getText().toString().contains("@")) {
-            url = ValidSession.IP + "/WS_Login.php?correo=" + txtUser.getText().toString().trim()
+            url = ValidSession.INSTANCE.getIP() + "/WS_Login.php?correo=" + txtUser.getText().toString().trim()
                     + "&pass=" + txtPass.getText().toString().trim();
             StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
             });
             Volley.newRequestQueue(getApplicationContext()).add(request);
         } else {
-            url = ValidSession.IP + "/ws_loginEmpresa.php?ruc=" + txtUser.getText().toString().trim()
+            url = ValidSession.INSTANCE.getIP() + "/ws_loginEmpresa.php?ruc=" + txtUser.getText().toString().trim()
                     + "&pass=" + txtPass.getText().toString().trim();
             StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                             return;
                         }
                         JSONObject data = array.getJSONObject(0);
-                        ValidSession.empresaLogueada = Empresa.cargarDatosDesdeJson(data);
+                        ValidSession.INSTANCE.setEmpresaLogueada(Empresa.Companion.cargarDatosDesdeJson(data));
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
                     } catch (JSONException e) {
@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loadUserDataFromDatabase(JSONObject data) {
-        ValidSession.usuarioLogueado = new User();
-        ValidSession.usuarioLogueado.loadUserDataFromJsonObject(data);
+        ValidSession.INSTANCE.setUsuarioLogueado(new User());
+        ValidSession.INSTANCE.getUsuarioLogueado().loadUserDataFromJsonObject(data);
     }
 }

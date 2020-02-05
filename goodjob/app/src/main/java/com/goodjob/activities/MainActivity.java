@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume() {
         super.onResume();
         // here i'll do the magic trick
-        if (ValidSession.empresaLogueada != null) {
+        if (ValidSession.INSTANCE.getEmpresaLogueada() != null) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.empresa_menu);
-        } else if (ValidSession.usuarioLogueado != null && ValidSession.usuarioLogueado.getTipoUsuario().equals("Administrador")) {
+        } else if (ValidSession.INSTANCE.getUsuarioLogueado() != null && ValidSession.INSTANCE.getUsuarioLogueado().getTipoUsuario().equals("Administrador")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.administrador_menu);
-        } else if (ValidSession.empresaLogueada == null && ValidSession.usuarioLogueado == null) {
+        } else if (ValidSession.INSTANCE.getEmpresaLogueada() == null && ValidSession.INSTANCE.getUsuarioLogueado() == null) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.activity_main_drawer);
         }
@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     selectedFragment = new ProductosCanjeFragment();
                     break;
                 case R.id.navigation_estado_mis_actividades:
-                    if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null) {
+                    if (ValidSession.INSTANCE.getUsuarioLogueado() == null && ValidSession.INSTANCE.getEmpresaLogueada() == null) {
                         cuadroDialogo();
                         return true;
-                    } else if (ValidSession.empresaLogueada != null) {
+                    } else if (ValidSession.INSTANCE.getEmpresaLogueada() != null) {
                         selectedFragment = new EstadoMisPublicacionesFragment();
                     } else {
                         selectedFragment = new EstadoMisActividadesFragment();
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void sendToLoginOrProfile() {
-        if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null) {
+        if (ValidSession.INSTANCE.getUsuarioLogueado() == null && ValidSession.INSTANCE.getEmpresaLogueada() == null) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         } else {

@@ -50,7 +50,7 @@ public class ProductosCanjeFragment extends Fragment {
     }
 
     private void cargarProductos() {
-        String url = ValidSession.IP + "/ws_listarProductosCanjeables.php";
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarProductosCanjeables.php";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

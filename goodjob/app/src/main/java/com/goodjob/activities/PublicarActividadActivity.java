@@ -128,7 +128,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
                 String[] format = fin.split("/");
                 final String f_fin = format[2] + "-" + format[1] + "-" + format[0];
 
-                String url = ValidSession.IP_IMAGENES + "/ws_publicarActividad.php";
+                String url = ValidSession.INSTANCE.getIP_IMAGENES() + "/ws_publicarActividad.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
@@ -148,7 +148,7 @@ public class PublicarActividadActivity extends AppCompatActivity {
                         params.put("foto", imageToString(bitmap));
                         params.put("titulo", nombreActividad.getText().toString());
                         params.put("descripcion", descripcionActividad.getText().toString());
-                        params.put("id_empresa", ValidSession.empresaLogueada.getId().toString());
+                        params.put("id_empresa", ValidSession.INSTANCE.getEmpresaLogueada().getId().toString());
                         params.put("fecha_fin", f_fin);
                         params.put("participantes_requeridos", cantidadParticipantes.getText().toString());
                         params.put("recompensa", recompensa.getText().toString());

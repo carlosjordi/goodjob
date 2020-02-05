@@ -93,7 +93,7 @@ public class SolicitudEmpresaActivity extends AppCompatActivity {
                     return;
                 }
 
-                String url = ValidSession.IP + "/ws_solicitudEmpresa.php";
+                String url = ValidSession.INSTANCE.getIP() + "/ws_solicitudEmpresa.php";
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

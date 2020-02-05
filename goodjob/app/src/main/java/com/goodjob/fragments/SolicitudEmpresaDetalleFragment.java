@@ -59,7 +59,7 @@ public class SolicitudEmpresaDetalleFragment extends Fragment {
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String url = ValidSession.IP + "/ws_aceptar_empresa.php?id_empresa=" + empresa.getId();
+                String url = ValidSession.INSTANCE.getIP() + "/ws_aceptar_empresa.php?id_empresa=" + empresa.getId();
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
                         .url(url)
@@ -95,7 +95,7 @@ public class SolicitudEmpresaDetalleFragment extends Fragment {
         rechazar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String url = ValidSession.IP + "/ws_rechazar_empresa.php?id_empresa=" + empresa.getId();
+                String url = ValidSession.INSTANCE.getIP() + "/ws_rechazar_empresa.php?id_empresa=" + empresa.getId();
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
                         .url(url)

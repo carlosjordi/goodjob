@@ -105,7 +105,7 @@ public class RegistrarProductoFragment extends Fragment {
 
                 if (!validarDatos()) return;
 
-                String url = ValidSession.IP_IMAGENES + "/ws_registrarProducto.php";
+                String url = ValidSession.INSTANCE.getIP_IMAGENES() + "/ws_registrarProducto.php";
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -124,7 +124,7 @@ public class RegistrarProductoFragment extends Fragment {
                         params.put("producto", producto.getText().toString().trim());
                         params.put("valor", valor.getText().toString().trim());
                         params.put("stock", stock.getText().toString().trim());
-                        params.put("id_empresa", String.valueOf(ValidSession.empresaLogueada.getId()));
+                        params.put("id_empresa", String.valueOf(ValidSession.INSTANCE.getEmpresaLogueada().getId()));
                         params.put("imagen", imageToString(bitmap));
                         params.put("lugar_canje", lugarCanje.getText().toString().trim());
                         return params;

@@ -86,7 +86,7 @@ public class ProductoEsperaFragment extends Fragment {
         2: rechazados
     * */
     private void cargarData() {
-        String url = ValidSession.IP + "/ws_listarProductosEnEspera.php?id_empresa=" + ValidSession.empresaLogueada.getId() +
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarProductosEnEspera.php?id_empresa=" + ValidSession.INSTANCE.getEmpresaLogueada().getId() +
                 "&estado=" + estado;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -95,7 +95,7 @@ public class ProductoEsperaFragment extends Fragment {
                     JSONArray array = new JSONArray(response);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object = array.getJSONObject(i);
-                        ProductoEspera pe = ProductoEspera.cargarDesdeJson(object);
+                        ProductoEspera pe = ProductoEspera.Companion.cargarDesdeJson(object);
                         productosEnEspera.add(pe);
                     }
                     cargarAdapter();

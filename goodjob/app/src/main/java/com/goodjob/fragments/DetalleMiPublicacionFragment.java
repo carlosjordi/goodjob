@@ -81,7 +81,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
     }
 
     private void consultarActividad(final Integer idActividad) {
-        String url = ValidSession.IP + "/ws_consultarActividadAceptada.php?id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_consultarActividadAceptada.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -89,7 +89,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    ActividadAceptada actividadAceptada = ActividadAceptada.cargarDatosDesdeJsonObject(jsonObject);
+                    ActividadAceptada actividadAceptada = ActividadAceptada.Companion.cargarDatosDesdeJsonObject(jsonObject);
                     setearCamposActividadAceptada(actividadAceptada);
                     cargarUsuariosPostulantes(idActividad);
                 } catch (JSONException e) {
@@ -119,7 +119,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
     }
 
     private void cargarUsuariosPostulantes(Integer idActividad) {
-        String url = ValidSession.IP + "/ws_listarPostulantes.php?id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarPostulantes.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -128,7 +128,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        UsuarioPostulante postulante = UsuarioPostulante.cargarDesdeJsonObject(jsonObject);
+                        UsuarioPostulante postulante = UsuarioPostulante.Companion.cargarDesdeJsonObject(jsonObject);
                         postulantes.add(postulante);
                     }
                     cargarAdapter();
@@ -153,7 +153,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
 
     @Override
     public void onAceptarClick(int posicion) {
-        String url = ValidSession.IP + "/ws_aceptarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
+        String url = ValidSession.INSTANCE.getIP() + "/ws_aceptarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
                 + "&id_actividad=" + idActividad;
 
         OkHttpClient client = new OkHttpClient();
@@ -189,7 +189,7 @@ public class DetalleMiPublicacionFragment extends Fragment implements UsuarioPos
 
     @Override
     public void onRechazarClick(int posicion) {
-        String url = ValidSession.IP + "/ws_rechazarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
+        String url = ValidSession.INSTANCE.getIP() + "/ws_rechazarPostulante.php?id_usuario=" + postulantes.get(posicion).getId()
                 + "&id_actividad=" + idActividad;
 
         OkHttpClient client = new OkHttpClient();

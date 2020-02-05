@@ -49,7 +49,7 @@ public class SolicitudProductosFragment extends Fragment implements OnSolicitudP
     }
 
     private void listarSolicitudProductos(View view) {
-        String url = ValidSession.IP + "/ws_listarSolicitudProductos.php";
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarSolicitudProductos.php";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

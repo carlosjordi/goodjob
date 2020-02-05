@@ -51,7 +51,7 @@ public class ListaEmpresasEsperaFragment extends Fragment implements OnSolicitud
     }
 
     private void listarEmpresasEnEspera() {
-        String url = ValidSession.IP + "/ws_listarSolicitudesEmpresa.php";
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarSolicitudesEmpresa.php";
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -59,7 +59,7 @@ public class ListaEmpresasEsperaFragment extends Fragment implements OnSolicitud
                     JSONArray array = new JSONArray(response);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object = array.getJSONObject(i);
-                        Empresa empresa = Empresa.cargarDatosDesdeJson(object);
+                        Empresa empresa = Empresa.Companion.cargarDatosDesdeJson(object);
                         empresas.add(empresa);
                     }
                     cargarAdapter();

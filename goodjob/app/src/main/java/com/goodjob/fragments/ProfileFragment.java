@@ -46,16 +46,16 @@ public class ProfileFragment extends Fragment {
         if (bundle != null)
             idUsuario = bundle.getInt("id");
 
-        if (idUsuario == null && ValidSession.usuarioLogueado != null)
-            idUsuario = ValidSession.usuarioLogueado.getId();
+        if (idUsuario == null && ValidSession.INSTANCE.getUsuarioLogueado() != null)
+            idUsuario = ValidSession.INSTANCE.getUsuarioLogueado().getId();
 
-        if (ValidSession.usuarioLogueado == null && ValidSession.empresaLogueada == null)
+        if (ValidSession.INSTANCE.getUsuarioLogueado() == null && ValidSession.INSTANCE.getEmpresaLogueada() == null)
             return view;
 
         consultarPerfilUsuario(idUsuario);
         botonCerrarSesion();
 
-        if (ValidSession.empresaLogueada != null && idUsuario == null){
+        if (ValidSession.INSTANCE.getEmpresaLogueada() != null && idUsuario == null){
             view = inflater.inflate(R.layout.perfil_de_la_empresa, container, false);
         }
 
@@ -63,13 +63,13 @@ public class ProfileFragment extends Fragment {
     }
 
     private void botonCerrarSesion(){
-        if (ValidSession.usuarioLogueado != null) {
+        if (ValidSession.INSTANCE.getUsuarioLogueado() != null) {
             cerrarSesion.setVisibility(View.VISIBLE);
             cerrarSesion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ValidSession.usuarioLogueado = null;
-                    ValidSession.empresaLogueada = null;
+                    ValidSession.INSTANCE.setUsuarioLogueado(null);
+                    ValidSession.INSTANCE.setEmpresaLogueada(null);
                     getFragmentManager().beginTransaction()
                             .replace(R.id.containerFragments, new HomeFragment())
                             .commit();
@@ -86,7 +86,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void consultarPerfilUsuario(Integer idUsuario) {
-        String url = ValidSession.IP + "/ws_consultarPerfilUsuario.php?id_usuario=" + idUsuario;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_consultarPerfilUsuario.php?id_usuario=" + idUsuario;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -94,7 +94,7 @@ public class ProfileFragment extends Fragment {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    PerfilUsuario perfilUsuario = PerfilUsuario.cargarDataDesdeJsonObject(jsonObject);
+                    PerfilUsuario perfilUsuario = PerfilUsuario.Companion.cargarDataDesdeJsonObject(jsonObject);
                     setearCamposEnPantalla(perfilUsuario);
 
                 } catch (JSONException e) {

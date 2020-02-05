@@ -79,8 +79,8 @@ public class ListadoActividadEmpresaEstadoFragment extends Fragment {
     }
 
     private void cargarData() {
-        String url = ValidSession.IP + "/ws_listarActividadesEmpresaPorEstado.php?id_empresa="
-                + ValidSession.empresaLogueada.getId() + "&estado=" + estado;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarActividadesEmpresaPorEstado.php?id_empresa="
+                + ValidSession.INSTANCE.getEmpresaLogueada().getId() + "&estado=" + estado;
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -88,7 +88,7 @@ public class ListadoActividadEmpresaEstadoFragment extends Fragment {
                     JSONArray array = new JSONArray(response);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject data = array.getJSONObject(i);
-                        ListadoActividadesEmpresa lae = ListadoActividadesEmpresa.crearDesdeJson(data);
+                        ListadoActividadesEmpresa lae = ListadoActividadesEmpresa.Companion.crearDesdeJson(data);
                         actividadesEmpresas.add(lae);
                         cargarAdapter();
                     }

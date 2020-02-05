@@ -68,7 +68,7 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
     }
 
     private void cargarDatosActividad(final Integer idActividad) {
-        String url = ValidSession.IP + "/ws_consultarActividadAceptada.php?id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_consultarActividadAceptada.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -76,7 +76,7 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    ActividadAceptada actividadAceptada = ActividadAceptada.cargarDatosDesdeJsonObject(jsonObject);
+                    ActividadAceptada actividadAceptada = ActividadAceptada.Companion.cargarDatosDesdeJsonObject(jsonObject);
                     setearCamposActividadAceptada(actividadAceptada);
                     cargarUsuariosParticipantes(idActividad);
                 } catch (JSONException e) {
@@ -101,7 +101,7 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
     }
 
     private void cargarUsuariosParticipantes(Integer idActividad) {
-        String url = ValidSession.IP + "/ws_listarUsuariosParticipantes.php?id_actividad=" + idActividad;
+        String url = ValidSession.INSTANCE.getIP() + "/ws_listarUsuariosParticipantes.php?id_actividad=" + idActividad;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -110,7 +110,7 @@ public class ActividadAceptadaFragment extends Fragment implements UsuarioPartic
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        UsuarioParticipante participante = UsuarioParticipante.cargarDataDesdeJsonObject(jsonObject);
+                        UsuarioParticipante participante = UsuarioParticipante.Companion.cargarDataDesdeJsonObject(jsonObject);
                         usuariosParticipantes.add(participante);
                     }
                     cargarAdaptador();

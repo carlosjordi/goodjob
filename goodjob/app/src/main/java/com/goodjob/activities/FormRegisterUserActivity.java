@@ -66,7 +66,7 @@ public class FormRegisterUserActivity extends AppCompatActivity {
     }
 
     private void CargarWebServiceRegistrarUser() {
-        String url = ValidSession.IP + "/ws_registrarUsuario.php";
+        String url = ValidSession.INSTANCE.getIP() + "/ws_registrarUsuario.php";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
