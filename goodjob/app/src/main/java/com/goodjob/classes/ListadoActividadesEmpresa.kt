@@ -19,25 +19,24 @@ class ListadoActividadesEmpresa(var id: Int? = null,
                                 var estado: Int? = null) {
 
     companion object {
-
         fun crearDesdeJson(json: JSONObject): ListadoActividadesEmpresa {
-            val actividad = ListadoActividadesEmpresa()
-            actividad.id = json.optInt("id")
-            actividad.titulo = json.optString("titulo")
-            actividad.descripcion = json.optString("descripcion")
-            actividad.empresa = json.optString("empresa")
-            actividad.fechaCreacion = json.optString("fecha_creacion")
-            actividad.fechaFin = json.optString("fecha_fin")
-            actividad.participantesActuales = json.optInt("participantes_actuales")
-            actividad.participantesRequeridos = json.optInt("participantes_requeridos")
-            actividad.urlFoto = json.optString("url_foto")
-            actividad.tipoRecompensa = json.optString("tipo_recompensa")
-            actividad.recompensa = json.optDouble("recompensa")
-            actividad.distrito = json.optString("distrito")
-            actividad.tipoSeleccion = json.optInt("tipo_seleccion")
-            actividad.mensaje = json.optString("mensaje")
-            actividad.estado = json.optInt("estado")
-            return actividad
+            return ListadoActividadesEmpresa().apply {
+                id = json.optInt("id")
+                titulo = json.optString("titulo")
+                descripcion = json.optString("descripcion")
+                empresa = json.optString("empresa")
+                fechaCreacion = json.optString("fecha_creacion")
+                fechaFin = json.optString("fecha_fin")
+                participantesActuales = json.optInt("participantes_actuales")
+                participantesRequeridos = json.optInt("participantes_requeridos")
+                urlFoto = json.optString("url_foto")
+                tipoRecompensa = json.optString("tipo_recompensa")
+                recompensa = json.optDouble("recompensa")
+                distrito = json.optString("distrito")
+                tipoSeleccion = json.optInt("tipo_seleccion")
+                mensaje = json.optString("mensaje")
+                estado = json.optInt("estado")
+            }
         }
     }
 }

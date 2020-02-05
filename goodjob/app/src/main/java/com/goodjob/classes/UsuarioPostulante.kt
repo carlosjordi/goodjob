@@ -10,24 +10,22 @@ class UsuarioPostulante(var id: Int? = null,
     companion object {
 
         fun cargarDesdeJsonObject(data: JSONObject): UsuarioPostulante {
-            val postulante = UsuarioPostulante()
-            postulante.id = data.optInt("id")
-            postulante.nombre = data.optString("nombre")
-            val reputacionPtos = data.optDouble("reputacion_ptos")
-            val cantidadVotos = data.optInt("cantidad_votos")
-            val estado = data.optInt("estado")
+            return UsuarioPostulante().apply {
+                id = data.optInt("id")
+                nombre = data.optString("nombre")
+                val reputacionPtos = data.optDouble("reputacion_ptos")
+                val cantidadVotos = data.optInt("cantidad_votos")
 
-            if (cantidadVotos == 0)
-                postulante.reputacion = 0.0
-            else
-                postulante.reputacion = reputacionPtos / cantidadVotos
+                reputacion = if (cantidadVotos == 0) 0.0
+                else reputacionPtos / cantidadVotos
 
-            when (estado) {
-                1 -> postulante.estado = "En Espera"
-                2 -> postulante.estado = "Aceptado"
-                3 -> postulante.estado = "Rechazado"
+                estado = when (data.optInt("estado")) {
+                    1 -> "En Espera"
+                    2 -> "Aceptado"
+                    3 -> "Rechazado"
+                    else -> ""
+                }
             }
-            return postulante
         }
     }
 }

@@ -23,21 +23,20 @@ class Empresa(var id: Int? = null,
     companion object {
 
         fun cargarDatosDesdeJson(data: JSONObject): Empresa {
-
-            val empresa = Empresa()
-            empresa.id = data.optInt("id")
-            empresa.razonSocial = data.optString("razon_social")
-            empresa.nombreComercial = data.optString("nombre_comercial")
-            empresa.ruc = data.optString("ruc")
-            empresa.telefono = data.optString("telefono")
-            empresa.correo = data.optString("correo")
-            empresa.direccion = data.optString("direccion")
-            empresa.fechaRegistro = data.optString("fecha_registro")
-            empresa.codigoPostal = data.optString("codigo_postal")
-            empresa.distrito = data.optString("distrito")
-            empresa.numeroActividades = data.optInt("numero_actividades")
-            empresa.estado = data.optInt("estado")
-            return empresa
+            return Empresa().apply {
+                id = data.optInt("id")
+                razonSocial = data.optString("razon_social")
+                nombreComercial = data.optString("nombre_comercial")
+                ruc = data.optString("ruc")
+                telefono = data.optString("telefono")
+                correo = data.optString("correo")
+                direccion = data.optString("direccion")
+                fechaRegistro = data.optString("fecha_registro")
+                codigoPostal = data.optString("codigo_postal")
+                distrito = data.optString("distrito")
+                numeroActividades = data.optInt("numero_actividades")
+                estado = data.optInt("estado")
+            }
         }
     }
 }

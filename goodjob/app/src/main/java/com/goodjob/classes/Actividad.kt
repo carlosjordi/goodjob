@@ -24,26 +24,24 @@ class Actividad(var id: Int? = null,
 
     companion object {
 
-        fun loadActivityDataFromJsonObject(jsonObject: JSONObject): Actividad {
-            val actividad = Actividad()
-
-            actividad.id = jsonObject.optInt("id")
-            actividad.title = jsonObject.optString("titulo")
-            actividad.description = jsonObject.optString("descripcion")
-            actividad.author = jsonObject.optString("empresa")
-            actividad.creationDate = jsonObject.optString("fecha_creacion")
-            actividad.endDate = jsonObject.optString("fecha_fin")
-            actividad.currentParticipants = jsonObject.optInt("participantes_actuales")
-            actividad.requiredParticipants = jsonObject.optInt("participantes_requeridos")
-            actividad.photo = jsonObject.optString("url_foto")
-            actividad.rewardType = jsonObject.optString("tipo_recompensa")
-            actividad.reward = jsonObject.optDouble("recompensa")
-            actividad.distrito = jsonObject.optString("distrito")
-            actividad.tipoSeleccion = jsonObject.optString("tipo_seleccion")
-            actividad.mensaje = jsonObject.optString("mensaje")
-            actividad.status = jsonObject.optInt("estado")
-
-            return actividad
+        fun loadFromJsonObject(jsonObject: JSONObject): Actividad {
+            return Actividad().apply {
+                id = jsonObject.optInt("id")
+                title = jsonObject.optString("titulo")
+                description = jsonObject.optString("descripcion")
+                author = jsonObject.optString("empresa")
+                creationDate = jsonObject.optString("fecha_creacion")
+                endDate = jsonObject.optString("fecha_fin")
+                currentParticipants = jsonObject.optInt("participantes_actuales")
+                requiredParticipants = jsonObject.optInt("participantes_requeridos")
+                photo = jsonObject.optString("url_foto")
+                rewardType = jsonObject.optString("tipo_recompensa")
+                reward = jsonObject.optDouble("recompensa")
+                distrito = jsonObject.optString("distrito")
+                tipoSeleccion = jsonObject.optString("tipo_seleccion")
+                mensaje = jsonObject.optString("mensaje")
+                status = jsonObject.optInt("estado")
+            }
         }
     }
 }

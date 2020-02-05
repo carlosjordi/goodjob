@@ -8,23 +8,18 @@ class PerfilUsuario(var id: Int? = null,
                     var reputacion: Double? = null) {
 
     companion object {
-
         fun cargarDataDesdeJsonObject(data: JSONObject): PerfilUsuario {
+            return PerfilUsuario().apply {
+                id = data.optInt("id")
+                nombre = data.optString("nombre")
+                puntaje = data.optInt("puntaje")
 
-            val perfilUsuario = PerfilUsuario()
-            perfilUsuario.id = data.optInt("id")
-            perfilUsuario.nombre = data.optString("nombre")
-            perfilUsuario.puntaje = data.optInt("puntaje")
+                val reputacionTotal = data.optDouble("reputacion_ptos")
+                val cantidadVotos = data.optInt("cantidad_votos")
 
-            val reputacionTotal = data.optDouble("reputacion_ptos")
-            val cantidadVotos = data.optInt("cantidad_votos")
-
-            if (cantidadVotos == 0)
-                perfilUsuario.reputacion = 0.0
-            else
-                perfilUsuario.reputacion = reputacionTotal / cantidadVotos
-
-            return perfilUsuario
+                reputacion = if (cantidadVotos == 0) 0.0
+                else reputacionTotal / cantidadVotos
+            }
         }
     }
 }

@@ -62,7 +62,7 @@ public class SolicitudActividadesEsperaFragment extends Fragment implements OnSo
                     Actividad a;
                     for (int i = 0; i < array.length(); i++) {
                         json = array.getJSONObject(i);
-                        a = Actividad.Companion.loadActivityDataFromJsonObject(json);
+                        a = Actividad.Companion.loadFromJsonObject(json);
                         actividades.add(a);
                     }
                     cargarAdapter();

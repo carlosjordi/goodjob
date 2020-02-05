@@ -84,7 +84,7 @@ public class DetailsAndApplyActivity extends AppCompatActivity {
                     try {
                         JSONArray array = new JSONArray(response);
                         JSONObject jsonObject = array.getJSONObject(0);
-                        actividad = Actividad.Companion.loadActivityDataFromJsonObject(jsonObject);
+                        actividad = Actividad.Companion.loadFromJsonObject(jsonObject);
                         loadData(actividad);
                     } catch (JSONException e) {
                         e.printStackTrace();

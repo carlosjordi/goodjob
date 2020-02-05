@@ -11,15 +11,13 @@ class ActividadAceptada(var titulo: String? = null,
     companion object {
 
         fun cargarDatosDesdeJsonObject(data: JSONObject): ActividadAceptada {
-            val actividadAceptada = ActividadAceptada()
-
-            actividadAceptada.titulo = data.optString("titulo")
-            actividadAceptada.nombreAutor = data.optString("nombre_completo")
-            actividadAceptada.fechaFin = data.optString("fecha_fin")
-            actividadAceptada.descripcion = data.optString("descripcion")
-            actividadAceptada.recompensa = data.optString("recompensa")
-
-            return actividadAceptada
+            return ActividadAceptada().apply {
+                titulo = data.optString("titulo")
+                nombreAutor = data.optString("nombre_completo")
+                fechaFin = data.optString("fecha_fin")
+                descripcion = data.optString("descripcion")
+                recompensa = data.optString("recompensa")
+            }
         }
     }
 }

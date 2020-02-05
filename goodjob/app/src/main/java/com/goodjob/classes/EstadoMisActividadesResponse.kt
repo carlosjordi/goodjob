@@ -15,18 +15,18 @@ class EstadoMisActividadesResponse(var id: Int? = null,
     companion object {
 
         fun cargarDataDesdeJsonObject(data: JSONObject): EstadoMisActividadesResponse {
-            val miActividad = EstadoMisActividadesResponse()
-
-            miActividad.id = data.optInt("id")
-            miActividad.titulo = data.optString("titulo")
-            miActividad.fecha = data.optString("fecha_fin")
-            when (data.optInt("estado")) {
-                1 -> miActividad.estado = "En Espera"
-                2 -> miActividad.estado = "Aceptado"
-                3 -> miActividad.estado = "Rechazado"
+            return EstadoMisActividadesResponse().apply {
+                id = data.optInt("id")
+                titulo = data.optString("titulo")
+                fecha = data.optString("fecha_fin")
+                estado = when (data.optInt("estado")) {
+                    1 -> "En Espera"
+                    2 -> "Aceptado"
+                    3 -> "Rechazado"
+                    else -> ""
+                }
+                distrito = data.optString("distrito")
             }
-            miActividad.distrito = data.optString("distrito")
-            return miActividad
         }
     }
 }

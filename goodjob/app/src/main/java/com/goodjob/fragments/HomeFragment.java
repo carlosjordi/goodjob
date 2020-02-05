@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment implements ActivityAdapter.OnActivity
     }
 
     private Actividad loadActivityDataFromDatabase(JSONObject jsonObject) {
-        return Actividad.Companion.loadActivityDataFromJsonObject(jsonObject);
+        return Actividad.Companion.loadFromJsonObject(jsonObject);
     }
 
     private void loadAdapter() {

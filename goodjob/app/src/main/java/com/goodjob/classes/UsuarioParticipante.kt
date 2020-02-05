@@ -7,21 +7,16 @@ class UsuarioParticipante(var id: Int? = null,
                           var reputacionPromedio: Double? = null) {
 
     companion object {
-
         fun cargarDataDesdeJsonObject(data: JSONObject): UsuarioParticipante {
+            return UsuarioParticipante().apply {
+                id = data.optInt("id")
+                nombre = data.optString("nombre")
+                val reputacionPtos = data.optDouble("reputacion_ptos")
+                val cantidadVotos = data.optInt("cantidad_votos")
 
-            val usuarioParticipante = UsuarioParticipante()
-            usuarioParticipante.id = data.optInt("id")
-            usuarioParticipante.nombre = data.optString("nombre")
-            val reputacionPtos = data.optDouble("reputacion_ptos")
-            val cantidadVotos = data.optInt("cantidad_votos")
-
-            if (cantidadVotos == 0)
-                usuarioParticipante.reputacionPromedio = 0.0
-            else
-                usuarioParticipante.reputacionPromedio = reputacionPtos / cantidadVotos
-
-            return usuarioParticipante
+                reputacionPromedio = if (cantidadVotos == 0) 0.0
+                else reputacionPtos / cantidadVotos
+            }
         }
     }
 }

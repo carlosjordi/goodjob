@@ -9,15 +9,14 @@ class EstadoMisPublicacionesResponse(var id: Int? = null,
                                      var estado: Int? = null) {
 
     companion object {
-
         fun cargarDesdeJsonObject(data: JSONObject): EstadoMisPublicacionesResponse {
-            val response = EstadoMisPublicacionesResponse()
-            response.id = data.optInt("id")
-            response.titulo = data.optString("titulo")
-            response.fecha = data.optString("fecha_fin")
-            response.postulantes = data.optInt("participantes_actuales")
-            response.estado = data.optInt("estado")
-            return response
+            return EstadoMisPublicacionesResponse().apply {
+                id = data.optInt("id")
+                titulo = data.optString("titulo")
+                fecha = data.optString("fecha_fin")
+                postulantes = data.optInt("participantes_actuales")
+                estado = data.optInt("estado")
+            }
         }
     }
 }

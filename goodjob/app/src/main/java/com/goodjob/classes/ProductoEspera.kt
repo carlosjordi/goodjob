@@ -9,15 +9,14 @@ class ProductoEspera(var id: Int? = null,
                      var fechaRegistro: String? = null) {
 
     companion object {
-
         fun cargarDesdeJson(data: JSONObject): ProductoEspera {
-            val pe = ProductoEspera()
-            pe.id = data.optInt("id")
-            pe.producto = data.optString("nombre")
-            pe.stock = data.optInt("stock")
-            pe.valor = data.optDouble("valor") * 7
-            pe.fechaRegistro = data.optString("fecha_registro")
-            return pe
+            return ProductoEspera().apply {
+                id = data.optInt("id")
+                producto = data.optString("nombre")
+                stock = data.optInt("stock")
+                valor = data.optDouble("valor") * 7
+                fechaRegistro = data.optString("fecha_registro")
+            }
         }
     }
 }
